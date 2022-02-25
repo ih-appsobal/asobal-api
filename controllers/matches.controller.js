@@ -2,7 +2,19 @@ const Match = require('../models/Match.model');
 
 module.exports.getAll = async(req, res, next) => {
   try {
-    const matches = Match.find();
+    const matches = Match.find()
+      .populate({
+        path: 'local',
+        populate: {
+          path: 'club'
+        }
+      })
+      .populate({
+        path: 'foreign',
+        populate: {
+          path: 'club'
+        }
+      });
     res.status(200).json(matches);
   } catch (err) {
     next(err)
@@ -11,7 +23,21 @@ module.exports.getAll = async(req, res, next) => {
 
 module.exports.getById = async(req, res, next) => {
   try {
-    const match = Match.findById(req.params.matchId);
+    const match = Match
+      .findById(req.params.matchId)
+      .populate({
+        path: 'local',
+        populate: {
+          path: 'club'
+        }
+      })
+      .populate({
+        path: 'foreign',
+        populate: {
+          path: 'club'
+        }
+      })
+      .populate('season');
     res.status(200).json(match);
   } catch (err) {
     next(err)
