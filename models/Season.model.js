@@ -32,6 +32,6 @@ seasonSchema.virtual('clubs', {
     justOne: false
 });
 
-const season = mongoose.model('Season', SeasonSchema);
+const season = mongoose.model('Season', seasonSchema);
 
 module.exports = season;
