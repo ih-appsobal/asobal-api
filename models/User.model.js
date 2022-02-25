@@ -47,6 +47,9 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// TODO: add virtual for club
+
+
 userSchema.pre('save', function(next) {
   const user = this;
 
