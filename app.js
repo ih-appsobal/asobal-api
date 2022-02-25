@@ -28,6 +28,9 @@ app.use('/api/users', userRoutes);
 const clubsRoutes = require('./config/routes/clubs.routes');
 app.use('/api/clubs', clubsRoutes);
 
+const matchesRoutes = require('./config/routes/matches.routes');
+app.use('/api/matches', matchesRoutes);
+
 /* Handle Errors */
 
 app.use((req, res, next) => {
