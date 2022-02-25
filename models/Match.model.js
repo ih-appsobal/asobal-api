@@ -63,7 +63,6 @@ const matchSchema = new Schema({
   },
   minute: {
     type: Number,
-    required: true,
     default: 0,
     min: 0
   },
@@ -71,6 +70,16 @@ const matchSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Season',
     required: [true, 'La temporada es obligatoria']
+  }
+}, {
+  timestamps:true,
+  toJSON: {
+    transform: (res, ret) => {
+      ret.id = res._id
+      delete ret._id
+      delete ret.__v
+      return ret
+    }
   }
 });
 
