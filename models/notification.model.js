@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const NotificationSchema = Schema({
-    title: {
+    url: {
         type: String,
-        require: [true, 'El título es obligatorio'],
+        require: [true, 'La url es obligatoria'],
     },
     message: {
         type: String,
@@ -17,7 +17,18 @@ const NotificationSchema = Schema({
     },
     read: {
         type: Boolean,
+        default: false,
     },
+}, {
+    timestamp: true,
+    toJSON: {
+        transform: (res, ret) => {
+            ret.id = res._id
+            delete ret._id
+            delete ret.__v
+            return ret
+          }
+    }
 }); 
 
 module.exports = mongoose.model('Notification', NotificationSchema);
