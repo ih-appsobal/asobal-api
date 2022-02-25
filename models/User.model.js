@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const CCAA = require('../constants/ccaa');
 const COUNTRIES = require('../constants/countries');
@@ -11,7 +12,7 @@ const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
-      required: [true, 'Introduce un correo electrónico'],
+      required: [true, 'Introduce tu correo electrónico'],
       match: [EMAIL_PATTERN, 'Introduce un correo electrónico válido'],
       unique: true
     },
@@ -22,7 +23,11 @@ const userSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      required: [true, 'Introduce un nombre']
+      required: [true, 'Introduce tu nombre']
+    },
+    surname: {
+      type: String,
+      required: [true, 'Introduce tus apellidos']
     },
     country: {
       required: [true, 'Introduce tu país'],
