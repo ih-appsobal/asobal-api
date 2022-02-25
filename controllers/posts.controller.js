@@ -1,6 +1,6 @@
 const Post = require('../models/post.model');
 
-module.exports.create = async(req, res) => {
+module.exports.create = async(req, res, next) => {
     
     try {
 
@@ -11,14 +11,22 @@ module.exports.create = async(req, res) => {
         res.status(200).json(post);
 
     } catch (error) {
-
+        next(error)
         console.log(error.message);
 
     };
 };
 
-module.exports.list = async(_, res) => {
-    const allPosts = await Post.find();
+module.exports.list = async(_, res, next) => {
 
-    res.status(200).json(allPosts);
+    try {
+
+        const allPosts = await Post.find();
+
+        res.status(200).json(allPosts);
+
+    } catch (error) {
+        
+        next(error)
+    }
 };
