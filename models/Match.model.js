@@ -24,9 +24,9 @@ const fouls = [{
 }];
 
 const matchSchema = new Schema({
-  jornada: {
+  fixture: {
     type: Number,
-    required: [true, 'La jornada es requerida']
+    required: [true, 'La fixture es requerida']
   },
   date: {
     type: Date,
