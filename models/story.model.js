@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 const StorySchema = Schema({
     image: {
         type: String,
-        require: [true, 'image-required'],
+        require: [true, 'La imagen es requerida'],
     },
     user: {
         type: Schema.Types.ObjectId,
-        require: [true, 'user-required'],
+        require: [true, 'El usuario es requerido'],
         ref: 'User',
     },
     text: {
         type: String,
-        require: [true, 'text-required'],
+        require: [true, 'El texto de la story es requerido'],
     },
 }); 
 
