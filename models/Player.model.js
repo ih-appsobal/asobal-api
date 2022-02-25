@@ -38,6 +38,6 @@ const playerSchema = new Schema({
   }
 });
 
-const player = new mongoose.model('player', playerSchema);
+const player = new mongoose.model('Player', playerSchema);
 
 module.exports = player;

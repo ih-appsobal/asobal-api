@@ -39,10 +39,10 @@ const clubSchema = new Schema({
 clubSchema.virtual('players', {
   ref: 'Player',
   localField: 'id',
-  foreignField: 'Club',
+  foreignField: 'club',
   justOne: false
 });
 
-const club = new mongoose.model('club', clubSchema);
+const club = new mongoose.model('Club', clubSchema);
 
 module.exports = club;
