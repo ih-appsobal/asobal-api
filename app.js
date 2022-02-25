@@ -37,6 +37,10 @@ app.use('/api/players', playersRoutes);
 const seasonsRoutes = require('./config/routes/seasons.routes');
 app.use('/api/seasons', seasonsRoutes);
 
+//posts routes
+const postRoutes = require('./config/routes/posts.route');
+app.use('/api/posts', postRoutes);
+
 /* Handle Errors */
 
 app.use((req, res, next) => {

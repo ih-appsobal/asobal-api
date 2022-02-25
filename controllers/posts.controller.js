@@ -17,7 +17,7 @@ module.exports.create = async(req, res) => {
     };
 };
 
-module.exports.list = async(res) => {
+module.exports.list = async(_, res) => {
     const allPosts = await Post.find();
 
     res.status(200).json(allPosts);
