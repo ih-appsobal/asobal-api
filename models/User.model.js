@@ -7,32 +7,45 @@ const EMAIL_PATTERN = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+
 const PASSWORD_PATTERN = /^.{8,}$/i;
 const SALT_ROUNDS = 10;
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: [true, 'Introduce un correo electrónico'],
-    match: [EMAIL_PATTERN, 'Introduce un correo electrónico válido'],
-    unique: true
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: [true, 'Introduce un correo electrónico'],
+      match: [EMAIL_PATTERN, 'Introduce un correo electrónico válido'],
+      unique: true
+    },
+    password: {
+      type: String,
+      required: [true, 'Introduce una contraseña'],
+      match: [PASSWORD_PATTERN, 'Introduce una contraseña válida'],
+    },
+    name: {
+      type: String,
+      required: [true, 'Introduce un nombre']
+    },
+    country: {
+      required: [true, 'Introduce tu país'],
+      type: String,
+      enum: COUNTRIES
+    },
+    ccaa: {
+      type: String,
+      enum: CCAA,
+    },
   },
-  password: {
-    type: String,
-    required: [true, 'Introduce una contraseña'],
-    match: [PASSWORD_PATTERN, 'Introduce una contraseña válida'],
-  },
-  name: {
-    type: String,
-    required: [true, 'Introduce un nombre']
-  },
-  country: {
-    required: [true, 'Introduce tu país'],
-    type: String,
-    enum: COUNTRIES
-  },
-  ccaa: {
-    type: String,
-    enum: CCAA,
-  },
-});
+  {
+    timestamps:true,
+    toJSON: {
+      transform: (res, ret) => {
+        ret.id = res._id
+        delete ret._id
+        delete ret.__v
+        return ret
+      }
+    }
+  }
+);
 
 userSchema.pre('save', function(next) {
   const user = this;
