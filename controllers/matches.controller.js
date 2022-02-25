@@ -2,7 +2,7 @@ const Match = require('../models/Match.model');
 
 module.exports.getAll = async(req, res, next) => {
   try {
-    const matches = Match.find()
+    const matches = await Match.find()
       .populate({
         path: 'local',
         populate: {
@@ -23,7 +23,7 @@ module.exports.getAll = async(req, res, next) => {
 
 module.exports.getById = async(req, res, next) => {
   try {
-    const match = Match
+    const match = await Match
       .findById(req.params.matchId)
       .populate({
         path: 'local',
