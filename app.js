@@ -22,6 +22,9 @@ app.use(cors())
 const routes = require('./config/routes.config')
 app.use('/api', routes)
 
+const userRoutes = require('./config/routes/users.routes')
+app.use('/api/users', userRoutes)
+
 /* Handle Errors */
 
 app.use((req, res, next) => {
