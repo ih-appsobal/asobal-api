@@ -19,11 +19,14 @@ app.use(cors())
 
 /* Routes */
 
-const routes = require('./config/routes.config')
-app.use('/api', routes)
+const routes = require('./config/routes.config');
+app.use('/api', routes);
 
-const userRoutes = require('./config/routes/users.routes')
-app.use('/api/users', userRoutes)
+const userRoutes = require('./config/routes/users.routes');
+app.use('/api/users', userRoutes);
+
+const clubsRoutes = require('./config/routes/clubs.routes');
+app.use('/api/clubs', clubsRoutes);
 
 /* Handle Errors */
 
