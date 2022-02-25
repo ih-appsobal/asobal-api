@@ -31,6 +31,12 @@ app.use('/api/clubs', clubsRoutes);
 const matchesRoutes = require('./config/routes/matches.routes');
 app.use('/api/matches', matchesRoutes);
 
+const playersRoutes = require('./config/routes/players.routes');
+app.use('/api/players', playersRoutes);
+
+const seasonsRoutes = require('./config/routes/seasons.routes');
+app.use('/api/seasons', seasonsRoutes);
+
 /* Handle Errors */
 
 app.use((req, res, next) => {
