@@ -25,7 +25,7 @@ seasonSchema.virtual('matches', {
     justOne: false
 });
 
-seasonSchema.virtual('clubes', {
+seasonSchema.virtual('clubs', {
     ref: 'Club',
     localField: 'id',
     foreignField: 'season',
