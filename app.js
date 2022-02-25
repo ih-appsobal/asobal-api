@@ -28,6 +28,10 @@ app.use('/api/users', userRoutes);
 const clubsRoutes = require('./config/routes/clubs.routes');
 app.use('/api/clubs', clubsRoutes);
 
+//notification routes
+const notificationRoutes = require('./config/routes/notifications.routes');
+app.use('/api/notifications', notificationRoutes);
+
 /* Handle Errors */
 
 app.use((req, res, next) => {
