@@ -1,22 +1,19 @@
-const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
 const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const CloudinaryStorage = require('multer-storage-cloudinary').CloudinaryStorage;
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_KEY,
   api_secret: process.env.CLOUDINARY_SECRET
-});
+})
 
-var storage = cloudinaryStorage({
-  cloudinary: cloudinary,
-  folder: 'ih-asobal', // The name of the folder in cloudinary
-  allowedFormats: ['jpg', 'png', 'mp4', 'wav'],
-  filename: function (req, file, cb) {
-    cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'ironhack/example',
+    allowed_formats: ['jpg', 'png', 'mp4', 'wav']
   }
-});
+})
 
-const uploadCloud = multer({ storage: storage });
-
-module.exports = uploadCloud;
+module.exports = multer({ storage })

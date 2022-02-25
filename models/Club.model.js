@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const clubSchema = new Schema({
   logo: {
     type: String,
-    required: true
+    required: [true, 'El logo es requerido']
   },
   name: {
     type: String,
-    required: true
+    required: [true, 'El nombre es requerido']
   },
   rrss: [{
     twitter: String,
@@ -18,9 +18,12 @@ const clubSchema = new Schema({
   }],
   address: {
     type: String,
-    required: true
+    required: [true, 'La dirección es requerida']
   },
-  background: String
+  background: {
+    type: String,
+    default: String
+  }
 }, {
   timestamps:true,
   toJSON: {

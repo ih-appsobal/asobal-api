@@ -9,7 +9,7 @@ const playerSchema = new Schema({
   },
   name: {
     type: String,
-    required: true
+    required: [true, 'El nombre es requerido']
   },
   rrss: [{
     twitter: String,
@@ -19,12 +19,12 @@ const playerSchema = new Schema({
   }],
   country: {
     type: String,
-    required: true
+    required: [true, 'El país es requerido']
   },
   club: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Club',
-    required: true
+    required: [true, 'El club es requerido']
   }
 }, {
   timestamps:true,
