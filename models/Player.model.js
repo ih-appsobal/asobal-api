@@ -12,10 +12,12 @@ const playerSchema = new Schema({
     type: String,
     required: [true, 'El nombre es requerido']
   },
-  twitter: String,
-  instagram: String,
-  facebook: String,
-  youtube: String,
+  rrss: {
+    twitter: String,
+    instagram: String,
+    facebook: String,
+    youtube: String
+  },
   country: {
     type: String,
     enum: countries,
