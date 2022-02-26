@@ -9,4 +9,7 @@ router.post('/login', usersController.authenticate)
 router.post('/', usersController.register)
 router.get('/me', isAuthenticated, usersController.getInfo)
 
+router.post('/register', usersController.register)
+router.patch('/users/me/club', isAuthenticated, usersController.addClub)
+
 module.exports = router;
