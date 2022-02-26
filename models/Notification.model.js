@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const NotificationSchema = Schema({
-    url: {
+    post: {
         type: Schema.Types.ObjectId,
         require: [true, 'El post es obligatorio'],
         ref: 'Post'
