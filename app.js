@@ -28,6 +28,11 @@ app.use('/api/users', userRoutes);
 const clubsRoutes = require('./config/routes/clubs.routes');
 app.use('/api/clubs', clubsRoutes);
 
+
+//notification routes
+const notificationRoutes = require('./config/routes/notifications.routes');
+app.use('/api/notifications', notificationRoutes);
+
 const matchesRoutes = require('./config/routes/matches.routes');
 app.use('/api/matches', matchesRoutes);
 
@@ -40,6 +45,7 @@ app.use('/api/seasons', seasonsRoutes);
 //posts routes
 const postRoutes = require('./config/routes/posts.routes');
 app.use('/api/posts', postRoutes);
+
 
 /* Handle Errors */
 
