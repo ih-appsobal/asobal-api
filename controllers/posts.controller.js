@@ -17,30 +17,22 @@ module.exports.create = async(req, res, next) => {
     };
 };
 
-module.exports.list = async(_, res, next) => {
-
+module.exports.getAll = async(_, res, next) => {
     try {
-
         const allPosts = await Post.find();
 
         res.status(200).json(allPosts);
-
     } catch (error) {
-        
-        next(error)
+        next(error);
     }
 };
 
-module.exports.onePost = async(req, res, next) => {
+module.exports.getById = async(req, res, next) => {
     try {
-        
         const post = await Post.findById(req.params.postId);
 
         res.status(200).json(post);
-
     } catch (error) {
-        
         next(error);
-        console.log(error.message);
-    };
+    }
 };
