@@ -17,6 +17,7 @@ module.exports.getById = async(req, res, next) => {
       .populate('matches');
     
     season = getStats(season);
+    
     res.status(200).json(season);
   } catch (err) {
     next(err);
