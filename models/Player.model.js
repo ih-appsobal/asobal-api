@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const countries = require('../constants/countries')
 const Schema = mongoose.Schema;
 
 const playerSchema = new Schema({
@@ -11,14 +12,15 @@ const playerSchema = new Schema({
     type: String,
     required: [true, 'El nombre es requerido']
   },
-  rrss: [{
+  rrss: {
     twitter: String,
     instagram: String,
     facebook: String,
     youtube: String
-  }],
+  },
   country: {
     type: String,
+    enum: countries,
     required: [true, 'El país es requerido']
   },
   club: {

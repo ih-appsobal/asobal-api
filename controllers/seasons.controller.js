@@ -1,9 +1,9 @@
-const Club = require('../models/Club.model');
+const Season = require('../models/Season.model');
 
 module.exports.getAll = async(req, res, next) => {
   try {
-    const clubs = await Club.find();
-    res.status(200).json(clubs);
+    const seasons = await Season.find();
+    res.status(200).json(seasons);
   } catch (err) {
     next(err);
   }
@@ -11,25 +11,28 @@ module.exports.getAll = async(req, res, next) => {
 
 module.exports.getById = async(req, res, next) => {
   try {
-    const club = await Club
-      .findById(req.params.clubId)
+    const season = await Season
+      .findById(req.params.seasonId)
+      .populate('clubs')
       .populate('matches');
     
-    club = getStats(club);
+    season = getStats(season);
     
-    res.status(200).json(club);
+    res.status(200).json(season);
   } catch (err) {
     next(err);
   }
 };
 
-const getStats = (club) => {
+const getStats = (season) => {
+  const { clubs, matches } = season;
+  const fullClubs = clubs.map(club => {
     let goals = 0;
     let fouls = 0;
     let yellowCards = 0;
     let redCards = 0;
     let blueCards = 0;
-    for (let match in club.matches) {
+    for (let match in matches) {
       let side;
       switch (club.id) {
         case match.local.club:
@@ -68,4 +71,7 @@ const getStats = (club) => {
       redCards,
       blueCards
     };
-  }
+  });
+
+  return { ...season, clubs: fullClubs };
+};

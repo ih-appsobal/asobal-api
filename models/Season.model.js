@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const seasonSchema = Schema({
-    interval: {
-        type: String,
-        require: [true, 'El intervalo es obligatorio']
-    }
+  interval: {
+    type: String,
+    require: [true, 'El intervalo es obligatorio']
+  }
 }, {
   timestamps:true,
   toJSON: {
