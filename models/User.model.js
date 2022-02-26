@@ -38,6 +38,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: CCAA,
     },
+    age: Number,
+    gender: {
+      type: String,
+      enum: ['Hombre', 'Mujer', 'Otro', 'Prefiero no decirlo'],
+      default: 'Prefiero no decirlo'
+    }
   },
   {
     timestamps:true,
