@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const NotificationSchema = Schema({
     url: {
-        type: String,
-        require: [true, 'La url es obligatoria'],
+        type: Schema.Types.ObjectId,
+        require: [true, 'El post es obligatorio'],
+        ref: 'Post'
     },
     message: {
         type: String,
