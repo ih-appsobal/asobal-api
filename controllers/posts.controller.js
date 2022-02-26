@@ -30,3 +30,17 @@ module.exports.list = async(_, res, next) => {
         next(error)
     }
 };
+
+module.exports.onePost = async(req, res, next) => {
+    try {
+        
+        const post = await Post.findById(req.params.postId);
+
+        res.status(200).json(post);
+
+    } catch (error) {
+        
+        next(error);
+        console.log(error.message);
+    };
+};
