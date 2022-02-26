@@ -33,7 +33,7 @@ module.exports.authenticate = (req, res, next) => {
               next(createError(404, { errors: { email: 'Email or password is incorrect' }}))
             } else {
               // JWT generation - only id is passed
-              res.json({ 
+              res.json({
                 access_token: jwt.sign(
                   { id: user._id },
                   process.env.JWT_SECRET || 'changemeplease:v',
@@ -46,4 +46,10 @@ module.exports.authenticate = (req, res, next) => {
           })
       }
     })
+}
+
+module.exports.addClub = (req, res, next) => {
+  User.findByIdAndUpdate(req.currentUser, { club: req.body.club })
+    .then(() => res.status(204))
+    .catch(next)
 }
