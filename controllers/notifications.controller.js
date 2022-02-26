@@ -1,6 +1,4 @@
-const createError = require('http-errors');
-const Notification = require('../models/notification.model');
-const User = require('../models/User.model');
+const Notification = require('../models/Notification.model');
 
 module.exports.create = async (req, res, next) => {
     try {
@@ -8,28 +6,19 @@ module.exports.create = async (req, res, next) => {
 
         await notification.save();
 
-        res.status(200).json(notification);
+        res.status(201).json(notification);
     } catch (error) {
-
-        next(error)
-
-        console.log(error.message)
+        next(error);
     }
 };
 
 //filter by user
-module.exports.userlist = async (req, res, next) => {
-
+module.exports.getByUserId = async (req, res, next) => {
     try {
-        
         const notification = await Notification.find({ user: req.currentUser});
 
         res.status(200).json(notification);
-
     } catch (error) {
-        
         next(error);
-        console.log(error.message)
-
     };
 };
