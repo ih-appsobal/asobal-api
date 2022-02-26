@@ -24,13 +24,13 @@ module.exports.authenticate = (req, res, next) => {
     .then(user => {
       if (!user) {
         // Error if no user
-        next(createError(404, { errors: { email: 'Email or password is incorrect' }}))
+        next(createError(404, { errors: { email: 'Email o contraseña incorrectos' }}))
       } else {
         return user.checkPassword(password)
           .then(match => {
             if (!match) {
               //Error if no password
-              next(createError(404, { errors: { email: 'Email or password is incorrect' }}))
+              next(createError(404, { errors: { email: 'Email o contraseña incorrectos' }}))
             } else {
               // JWT generation - only id is passed
               res.json({ 
@@ -46,4 +46,19 @@ module.exports.authenticate = (req, res, next) => {
           })
       }
     })
+    .catch(err => next(err))
+}
+
+module.exports.getInfo = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.currentUser)
+
+    if (user) {
+      res.status(200).json(user)
+    } else {
+      next(createError(404))
+    }
+  } catch(err) {
+    next(err)
+  }
 }
