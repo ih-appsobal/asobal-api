@@ -1,17 +1,18 @@
 [
     {
-        "url": "/partidos",
         "message": "El partido está apunto de empezar",
         "read": false
     },
     {
-        "url": "/app/equipo",
         "message": "Tu equipo acaba de publicar una noticia",
         "read": false
     },
     {
-        "url": "/app/noticas",
         "message": "Tienes una noticia nueva",
         "read": false
+    },
+    {
+        "message": "Tienes una tarea pendiente!",
+        "read": true
     }
 ]

@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const User = require('../models/User.model');
 const Notification = require('../models/Notification.model');
+const Post = require('../models/Post.model')
+const posts = require('../data/posts.json');
 const mongoose = require('mongoose');
 const profiles = require('../data/users.json');
 const notificationsMock = require('../data/notifications.json');
@@ -12,26 +14,29 @@ mongoose.connection.once('open', () => {
     console.info(`***Connected to the database ${mongoose.connection.db.databaseName} ***`);
 
     mongoose.connection.db
-        .dropCollection('notifications')
-        .then(() =>{
-            `O.o! ${mongoose.connection.db.databaseName} dropped!`
-            return mongoose.connection.db
-            .dropCollection('users')
-            })
+        .dropCollection('users')
+        .then(() => {`O.o! ${mongoose.connection.db.databaseName} dropped!`})
         .then(() => {
-            `O.o! ${mongoose.connection.db.databaseName} dropped!`
             profiles.forEach(user => {
                 new User({
                     ...user
                 }).save()
                 .then((user) => {
-                    notificationsMock.forEach(notification => {
-                        new Notification({
-                            ...notification,
-                            user: user.id,
-                        }).save()
-                        .then((notification) => console.log(notification))
-                    })
+                    posts.forEach(async post => {
+                        await new Post({...post})
+                            .save()
+                            .then(post => {
+                                notificationsMock.forEach(notification => {
+                                    new Notification({
+                                        ...notification,
+                                        url: post._id,
+                                        user: user.id,
+                                    }).save()
+                                    .then((notification) => console.log(notification))
+                                })
+                            })
+                      })
+
                 })
             })
         })
