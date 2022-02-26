@@ -43,6 +43,13 @@ clubSchema.virtual('players', {
   justOne: false
 });
 
+clubSchema.virtual('matches', {
+  ref: 'Matches',
+  localField: 'id',
+  foreignField: 'club',
+  justOne: false
+});
+
 const club = new mongoose.model('Club', clubSchema);
 
 module.exports = club;
