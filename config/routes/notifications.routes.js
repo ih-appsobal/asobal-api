@@ -4,6 +4,6 @@ const notificationsController = require('../../controllers/notifications.control
 const { isAuthenticated } = require('../../middlewares/auth.middleware');
 
 router.post('/new', notificationsController.create);
-router.get('/:notificationId', isAuthenticated, notificationsController.userlist);
+router.get('/', isAuthenticated, notificationsController.userlist);
 
 module.exports = router;
