@@ -25,13 +25,6 @@ seasonSchema.virtual('matches', {
     justOne: false
 });
 
-seasonSchema.virtual('clubs', {
-    ref: 'Club',
-    localField: 'id',
-    foreignField: 'season',
-    justOne: false
-});
-
 const season = mongoose.model('Season', seasonSchema);
 
 module.exports = season;
