@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: COUNTRIES
     },
+    club: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Club',
+    },
     ccaa: {
       type: String,
       enum: CCAA,
