@@ -10,12 +10,12 @@ const clubSchema = new Schema({
     type: String,
     required: [true, 'El nombre es requerido']
   },
-  rrss: [{
+  rrss: {
     twitter: String,
     instagram: String,
     facebook: String,
     youtube: String
-  }],
+  },
   address: {
     type: String,
     required: [true, 'La dirección es requerida']
