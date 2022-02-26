@@ -57,7 +57,7 @@ module.exports.getInfo = async (req, res, next) => {
     if (user) {
       res.status(200).json(user)
     } else {
-      next(createError(404))
+      next(createError(401))
     }
   } catch(err) {
     next(err)
