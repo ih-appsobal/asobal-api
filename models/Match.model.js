@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+require('./Story.model')
 
 const goals = [{
   type: Number,
@@ -74,6 +75,7 @@ const matchSchema = new Schema({
 }, {
   timestamps:true,
   toJSON: {
+    virtuals: true,
     transform: (res, ret) => {
       ret.id = res._id
       delete ret._id
@@ -81,6 +83,13 @@ const matchSchema = new Schema({
       return ret
     }
   }
+});
+
+matchSchema.virtual('stories', {
+  ref: 'Story',
+  localField: '_id',
+  foreignField: 'match',
+  justOne: false
 });
 
 const Match = mongoose.model('Match', matchSchema);

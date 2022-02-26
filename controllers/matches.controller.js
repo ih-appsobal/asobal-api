@@ -37,7 +37,8 @@ module.exports.getById = async(req, res, next) => {
           path: 'club'
         }
       })
-      .populate('season');
+      .populate('season')
+      .populate('stories')
     res.status(200).json(match);
   } catch (err) {
     next(err)

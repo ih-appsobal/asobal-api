@@ -11,6 +11,11 @@ const storySchema = Schema({
         require: [true, 'El usuario es requerido'],
         ref: 'User',
     },
+    match: {
+        type: Schema.Types.ObjectId,
+        require: [true, 'El partido es requerido'],
+        ref: 'Match',
+    },
     text: {
         type: String,
         require: [true, 'El texto de la story es requerido'],

@@ -4,9 +4,11 @@ const Post = require('../models/Post.model')
 const mongoose = require('mongoose')
 const clubs = require('../data/clubs.json');
 const posts = require('../data/posts.json');
+const stories = require('../data/stories.json');
 const Match = require('../models/Match.model');
 const Season = require('../models/Season.model');
-
+const Story = require('../models/Story.model');
+const User = require('../models/User.model');
 
 require('../config/db.config');
 
@@ -64,7 +66,12 @@ mongoose.connection.once('open', () => {
                       minute: Math.floor(Math.random() * 60 + 1),
                       season: season._id
                     }).save()
-                      .then(match => console.log(match.local.cards))
+                      .then(match => {
+                        console.log(match.local.cards)
+
+                        
+
+                      })
                   }
                 })
             })
