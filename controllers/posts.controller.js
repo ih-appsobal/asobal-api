@@ -19,7 +19,7 @@ module.exports.create = async(req, res, next) => {
 
 module.exports.getAll = async(_, res, next) => {
     try {
-        const allPosts = await Post.find();
+        const allPosts = await Post.find({ visible: true });
 
         res.status(200).json(allPosts);
     } catch (error) {
