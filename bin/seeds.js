@@ -26,9 +26,6 @@ mongoose.connection.once('open', () => {
     .dropDatabase()
       .then(() => `O.o! ${mongoose.connection.db.databaseName} dropped!`)
       .then(() => {
-        posts.forEach(async post => {
-          await new Post({...post}).save()
-        })
         clubs.forEach(club => {
           new Club({
             ...club

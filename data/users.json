@@ -1,0 +1,35 @@
+[{
+        "email": "juanorro@juanorro.com",
+        "password": "12341234",
+        "name": "Juanorro",
+        "surname": "el titi",
+        "country": "España",
+        "ccaa": "Extremadura"
+    }, {
+        "email": "pablito@pablito.com",
+        "password": "12341234",
+        "name": "Pablito",
+        "surname": "el calvo",
+        "country": "España",
+        "ccaa": "Andalucia"
+  }, {
+        "email": "carlitos@carlitos.com",
+        "password": "12341234",
+        "name": "Carlitos",
+        "surname": "el evidente",
+        "country": "España",
+        "ccaa": "Cantabria"
+    }, {
+        "email": "marquitos@marquitos.com",
+        "password": "12341234",
+        "name": "Marquitos",
+        "surname": "hoooooooola",
+        "country": "Cuba"
+    }, {
+        "email": "raulito@raulito.com",
+        "password": "12341234",
+        "name": "Raulito",
+        "surname": "el tortones",
+        "country": "España",
+        "ccaa": "Comunidad de Madrid"
+    }]

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./app.js",
     "dev": "DEBUG=amahack-api:* nodemon ./app.js",
-    "seeds": "node ./bin/seeds.js"
+    "seeds": "node ./bin/seeds.js",
+    "seedsUsers": "node ./bin/seedsUsers.js"
   },
   "repository": {
     "type": "git",
