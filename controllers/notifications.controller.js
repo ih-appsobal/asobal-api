@@ -26,7 +26,7 @@ module.exports.getAllByUserId = async (req, res, next) => {
 module.exports.update = async (req, res, next) => {
     try {
         const notification = await Notification
-            .findByIdAndUpdate(req.params.notificationId, req.body, { new: true });
+            .findByIdAndUpdate(req.params.notificationId, { read: true }, { new: true });
         
         res.status(200).json(notification);
     } catch (err) {
