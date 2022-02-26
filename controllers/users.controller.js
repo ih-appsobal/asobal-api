@@ -57,7 +57,7 @@ module.exports.getInfo = async (req, res, next) => {
     if (user) {
       res.status(200).json(user)
     } else {
-      next(createError(404))
+      next(createError(401))
     }
   } catch(err) {
     next(err)
@@ -67,6 +67,6 @@ module.exports.getInfo = async (req, res, next) => {
 
 module.exports.addClub = (req, res, next) => {
   User.findByIdAndUpdate(req.currentUser, { club: req.body.club })
-    .then(() => res.status(204))
+    .then(() => res.status(204).json({}))
     .catch(next)
 }
